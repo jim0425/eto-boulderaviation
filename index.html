@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boulder iQ — EtO compliance for small-volume sterilizers</title>
+<meta name="description" content="Built for sterilizers using less than 1 ton of EtO per year on 3M, Steri-Vac, Solventum, or Anderson chambers. Don't let compliance eat your profit.">
+<style>
+  :root {
+    --navy: #1F4E78;
+    --navy-dark: #143657;
+    --gold: #FFE699;
+    --gold-dark: #F4B084;
+    --slate: #2C3E50;
+    --gray-50: #F8FAFC;
+    --gray-100: #F1F5F9;
+    --gray-200: #E2E8F0;
+    --gray-400: #94A3B8;
+    --gray-600: #475569;
+    --gray-800: #1E293B;
+    --green: #15803D;
+    --red: #B91C1C;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    color: var(--slate);
+    line-height: 1.55;
+    background: white;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  /* ===== Nav ===== */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: white; border-bottom: 1px solid var(--gray-200);
+    padding: 14px 0;
+  }
+  nav .inner { display: flex; align-items: center; justify-content: space-between; }
+  .logo { font-weight: 700; font-size: 22px; color: var(--navy); letter-spacing: -0.5px; }
+  .nav-links a {
+    color: var(--gray-600); text-decoration: none; margin-left: 28px; font-size: 15px; font-weight: 500;
+  }
+  .nav-links a:hover { color: var(--navy); }
+  .nav-cta {
+    background: var(--navy); color: white !important; padding: 10px 18px;
+    border-radius: 6px; font-weight: 600;
+  }
+  .nav-cta:hover { background: var(--navy-dark); color: white; }
+
+  /* ===== Hero ===== */
+  .hero {
+    background: linear-gradient(135deg, var(--gray-50) 0%, white 100%);
+    padding: 80px 0 60px;
+    border-bottom: 1px solid var(--gray-200);
+  }
+  .hero h1 {
+    font-size: 52px; line-height: 1.1; color: var(--navy);
+    letter-spacing: -1.2px; font-weight: 800; max-width: 850px;
+    margin-bottom: 20px;
+  }
+  .hero h1 .accent { color: var(--gold-dark); }
+  .hero .lede {
+    font-size: 21px; color: var(--gray-600); max-width: 700px; margin-bottom: 36px;
+    line-height: 1.5;
+  }
+  .hero-cta {
+    display: inline-block; background: var(--navy); color: white;
+    padding: 16px 32px; border-radius: 8px; text-decoration: none;
+    font-weight: 600; font-size: 17px;
+    transition: all 0.2s;
+  }
+  .hero-cta:hover { background: var(--navy-dark); transform: translateY(-1px); }
+  .hero-secondary {
+    color: var(--navy); margin-left: 18px; text-decoration: none; font-weight: 600;
+  }
+  .hero-secondary:hover { text-decoration: underline; }
+
+  /* ===== Sections ===== */
+  section { padding: 70px 0; }
+  section.alt { background: var(--gray-50); }
+  h2 {
+    font-size: 36px; color: var(--navy); margin-bottom: 16px;
+    letter-spacing: -0.6px; font-weight: 700;
+  }
+  .section-lede { font-size: 18px; color: var(--gray-600); max-width: 700px; margin-bottom: 40px; }
+
+  /* ===== Qualifier checklist ===== */
+  .qualifier {
+    background: white; border: 2px solid var(--gold); border-radius: 12px;
+    padding: 32px; max-width: 720px;
+  }
+  .qualifier h3 {
+    font-size: 20px; color: var(--navy); margin-bottom: 16px;
+  }
+  .qualifier ul { list-style: none; }
+  .qualifier li {
+    padding: 10px 0; font-size: 16px; color: var(--gray-800);
+    display: flex; align-items: flex-start;
+  }
+  .qualifier li::before {
+    content: "✓"; color: var(--green); font-weight: 700; font-size: 20px;
+    margin-right: 14px; flex-shrink: 0; line-height: 1.2;
+  }
+
+  /* ===== Origin story ===== */
+  .origin-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center; }
+  .origin-story p { font-size: 17px; margin-bottom: 16px; color: var(--gray-600); }
+  .origin-story p strong { color: var(--slate); }
+  .origin-stats {
+    background: var(--navy); color: white; border-radius: 12px; padding: 32px;
+  }
+  .origin-stats .stat { padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.15); }
+  .origin-stats .stat:last-child { border-bottom: none; }
+  .origin-stats .label { font-size: 13px; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px; }
+  .origin-stats .value { font-size: 28px; font-weight: 700; margin-top: 4px; }
+
+  /* ===== Calculator ===== */
+  .calculator {
+    background: white; border: 1px solid var(--gray-200); border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  }
+  .calc-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 40px; }
+  .calc-inputs label {
+    display: block; font-weight: 600; font-size: 14px;
+    color: var(--gray-800); margin-bottom: 6px; margin-top: 18px;
+  }
+  .calc-inputs label:first-child { margin-top: 0; }
+  .calc-inputs input {
+    width: 100%; padding: 12px 14px; border: 1px solid var(--gray-200);
+    border-radius: 6px; font-size: 16px; color: var(--slate);
+    font-family: inherit;
+  }
+  .calc-inputs input:focus { outline: 2px solid var(--navy); border-color: var(--navy); }
+  .calc-helper { font-size: 12px; color: var(--gray-400); margin-top: 4px; }
+
+  .calc-results .result-block {
+    margin-bottom: 24px;
+  }
+  .calc-results .result-block:last-child { margin-bottom: 0; }
+  .result-label {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 8px;
+  }
+  .result-label .name { font-weight: 600; font-size: 14px; color: var(--gray-800); }
+  .result-label .amt { font-size: 14px; color: var(--gray-600); }
+  .result-label .pct { font-weight: 700; font-size: 14px; }
+  .pct-good { color: var(--green); }
+  .pct-warn { color: #B45309; }
+  .pct-bad { color: var(--red); }
+  .bar-track { background: var(--gray-100); border-radius: 4px; height: 24px; overflow: hidden; }
+  .bar-fill {
+    height: 100%; transition: width 0.6s ease, background 0.4s; border-radius: 4px;
+  }
+  .calc-summary {
+    margin-top: 20px; padding: 18px;
+    background: var(--gray-50); border-radius: 8px;
+    border-left: 4px solid var(--navy);
+  }
+  .calc-summary .big { font-size: 24px; font-weight: 700; color: var(--navy); }
+  .calc-summary .label { font-size: 13px; color: var(--gray-600); margin-top: 2px; }
+
+  /* ===== Solutions ===== */
+  .solutions {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  .solution-card {
+    background: white; border: 1px solid var(--gray-200); border-radius: 12px;
+    padding: 32px; transition: all 0.2s;
+  }
+  .solution-card.recommended {
+    border: 2px solid var(--gold-dark); position: relative;
+    transform: translateY(-8px);
+    box-shadow: 0 8px 32px rgba(244,176,132,0.25);
+  }
+  .solution-card.recommended::before {
+    content: "RECOMMENDED"; position: absolute; top: -12px; left: 24px;
+    background: var(--gold-dark); color: white; font-size: 11px; font-weight: 700;
+    padding: 4px 12px; border-radius: 4px; letter-spacing: 1px;
+  }
+  .solution-card h3 { font-size: 22px; color: var(--navy); margin-bottom: 8px; }
+  .solution-card .price { font-size: 32px; font-weight: 800; color: var(--slate); margin: 16px 0 4px; }
+  .solution-card .price small { font-size: 16px; font-weight: 500; color: var(--gray-600); }
+  .solution-card .price-note { font-size: 13px; color: var(--gray-600); margin-bottom: 20px; }
+  .solution-card ul { list-style: none; }
+  .solution-card li { padding: 8px 0; font-size: 14px; color: var(--gray-800); }
+  .solution-card li::before { content: "→ "; color: var(--navy); font-weight: 700; }
+
+  /* ===== Comparison table ===== */
+  .comparison-table { width: 100%; border-collapse: collapse; background: white;
+    border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+  .comparison-table th, .comparison-table td {
+    padding: 16px 20px; text-align: left; border-bottom: 1px solid var(--gray-200);
+  }
+  .comparison-table th {
+    background: var(--navy); color: white; font-weight: 600; font-size: 14px;
+    letter-spacing: 0.3px;
+  }
+  .comparison-table tr.highlight { background: #FFF8E1; }
+  .comparison-table .savings { color: var(--green); font-weight: 700; }
+  .comparison-table td:first-child { font-weight: 600; }
+
+  /* ===== Included ===== */
+  .included-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .included-col h3 { font-size: 18px; color: var(--navy); margin-bottom: 16px; }
+  .included-col ul { list-style: none; }
+  .included-col li {
+    padding: 8px 0; font-size: 15px; color: var(--gray-800);
+    display: flex; align-items: flex-start;
+  }
+  .included-col li::before {
+    content: "✓"; color: var(--green); font-weight: 700; margin-right: 12px; flex-shrink: 0;
+  }
+
+  /* ===== Why ===== */
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .why-card {
+    background: white; border: 1px solid var(--gray-200); border-radius: 10px;
+    padding: 24px;
+  }
+  .why-card h3 { color: var(--navy); font-size: 18px; margin-bottom: 8px; }
+  .why-card p { font-size: 15px; color: var(--gray-600); }
+
+  /* ===== FAQ ===== */
+  .faq-item { background: white; border: 1px solid var(--gray-200); border-radius: 8px;
+    margin-bottom: 12px; padding: 20px 24px; cursor: pointer;
+  }
+  .faq-q {
+    font-weight: 600; font-size: 16px; color: var(--slate);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .faq-q::after { content: "+"; font-size: 24px; color: var(--navy); transition: transform 0.2s; }
+  .faq-item.open .faq-q::after { transform: rotate(45deg); }
+  .faq-a { display: none; padding-top: 12px; color: var(--gray-600); font-size: 15px; }
+  .faq-item.open .faq-a { display: block; }
+
+  /* ===== CTA section ===== */
+  .cta-box {
+    background: var(--navy); color: white; border-radius: 16px; padding: 56px 40px; text-align: center;
+  }
+  .cta-box h2 { color: white; margin-bottom: 12px; }
+  .cta-box p { font-size: 18px; opacity: 0.9; max-width: 600px; margin: 0 auto 32px; }
+  .cta-box .btn-gold {
+    background: var(--gold-dark); color: var(--slate);
+    padding: 16px 36px; border-radius: 8px; text-decoration: none;
+    font-weight: 700; font-size: 17px; display: inline-block;
+  }
+  .cta-box .btn-gold:hover { background: var(--gold); }
+
+  /* ===== Footer ===== */
+  footer {
+    background: var(--gray-800); color: var(--gray-400); padding: 40px 0;
+  }
+  footer .footer-inner { display: grid; grid-template-columns: 2fr 1fr; gap: 32px; }
+  footer h4 { color: white; font-size: 14px; margin-bottom: 12px; letter-spacing: 0.5px; }
+  footer p { font-size: 14px; line-height: 1.7; }
+  footer a { color: var(--gold); text-decoration: none; }
+
+  /* ===== Mobile ===== */
+  @media (max-width: 800px) {
+    .hero h1 { font-size: 36px; }
+    .hero .lede { font-size: 17px; }
+    h2 { font-size: 28px; }
+    .nav-links { display: none; }
+    .nav-cta { padding: 8px 14px; font-size: 14px; margin-left: 0; }
+    .nav-links a.nav-cta { display: inline-block; }
+    .origin-grid, .calc-grid, .why-grid, .included-grid { grid-template-columns: 1fr; gap: 24px; }
+    .solutions { grid-template-columns: 1fr; }
+    .solution-card.recommended { transform: none; }
+    .comparison-table { font-size: 13px; display: block; overflow-x: auto; }
+    .comparison-table th, .comparison-table td { padding: 12px; }
+    .calculator { padding: 24px; }
+    section { padding: 50px 0; }
+    .cta-box { padding: 40px 24px; }
+    footer .footer-inner { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="container inner">
+    <div class="logo">Boulder iQ</div>
+    <div class="nav-links">
+      <a href="#calculator">Calculator</a>
+      <a href="#solutions">Solutions</a>
+      <a href="#compare">Compare</a>
+      <a href="#travel">Travel</a>
+      <a href="#gaps">Gaps</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact" class="nav-cta">Get a quote</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="container">
+    <h1>Don't let EtO compliance <span class="accent">eat your profit.</span></h1>
+    <p class="lede">
+      Continuous indoor air monitoring and NESHAP emission compliance for small-volume
+      ethylene oxide sterilizers — for $5,000 to $11,000 per month with zero upfront capital.
+      Save up to $617,000 over five years versus the only full-coverage path competitors offer.
+    </p>
+    <a href="#calculator" class="hero-cta">See how much you'd save →</a>
+    <a href="#solutions" class="hero-secondary">Or jump to solutions</a>
+  </div>
+</header>
+
+<!-- ===== QUALIFIER ===== -->
+<section>
+  <div class="container">
+    <h2>Is this you?</h2>
+    <p class="section-lede">If two or more of these describe your facility, Boulder iQ was built for you.</p>
+    <div class="qualifier">
+      <h3>You probably need to keep reading if&hellip;</h3>
+      <ul>
+        <li>You use less than 1 ton (2,000 lbs) of ethylene oxide per year</li>
+        <li>You operate 3M Steri-Vac, Solventum, Anderson, or similar combination sterilization-and-aeration chambers</li>
+        <li>You've been quoted between $400,000 and $1,100,000 for compliance monitoring</li>
+        <li>You're trying to figure out how to comply with the January 2027 FIFRA deadline without blowing up your P&amp;L</li>
+        <li>The 25-point Picarro system is overkill, but you still need to comply</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ORIGIN STORY ===== -->
+<section class="alt">
+  <div class="container">
+    <h2>We built this because we needed it.</h2>
+    <p class="section-lede">Necessity is the mother of invention.</p>
+    <div class="origin-grid">
+      <div class="origin-story">
+        <p>
+          Boulder iQ runs a real sterilization operation. We use about
+          <strong>500 pounds of ethylene oxide per year</strong> in combination chambers —
+          exactly the kind of small-volume facility every regulator now wants to monitor
+          continuously.
+        </p>
+        <p>
+          When the FIFRA Interim Decision and the 2024 NESHAP rule landed, we got the same
+          quotes you did. Picarro wanted <strong>$662,000 over five years.</strong>
+          CleanAir wanted <strong>$1,112,000</strong> for their full FIFRA + NESHAP combo.
+        </p>
+        <p>
+          The math didn't work. So we built our own platform — <strong>compliance hardware
+          plus complete regulatory reporting</strong> — sized for facilities like ours and
+          priced for the businesses we'd actually want to run. Now we sell it to other
+          small-volume sterilizers like you.
+        </p>
+      </div>
+      <div class="origin-stats">
+        <div class="stat">
+          <div class="label">Our facility</div>
+          <div class="value">500 lbs/yr</div>
+        </div>
+        <div class="stat">
+          <div class="label">Our chambers</div>
+          <div class="value">3M / Solventum</div>
+        </div>
+        <div class="stat">
+          <div class="label">What competitors quoted us</div>
+          <div class="value">$662K – $1.1M</div>
+        </div>
+        <div class="stat">
+          <div class="label">What we built instead</div>
+          <div class="value">$5K – $11K /mo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CALCULATOR ===== -->
+<section id="calculator">
+  <div class="container">
+    <h2>How much of your profit goes to compliance?</h2>
+    <p class="section-lede">
+      Enter your numbers. See what each vendor's monitoring solution actually costs you
+      — measured in lost gross profit, not in invoices.
+    </p>
+    <div class="calculator">
+      <div class="calc-grid">
+        <div class="calc-inputs">
+          <label>Sterilization cycles per year</label>
+          <input type="number" id="cycles" value="1655" min="1">
+          <p class="calc-helper">A 500 lb/yr facility at 137 g/cycle = ~1,655 cycles</p>
+
+          <label>Revenue per cycle ($)</label>
+          <input type="number" id="rev" value="900" min="0">
+          <p class="calc-helper">Your blended average per sterilization run</p>
+
+          <label>Gross margin (%)</label>
+          <input type="number" id="margin" value="40" min="0" max="100" step="1">
+          <p class="calc-helper">Industry typical for medical device sterilization is 35–50%</p>
+
+          <div style="margin-top:18px;padding:14px;background:#FFF8E1;border-radius:6px;border:1px solid #F4B084;">
+            <label style="display:flex;align-items:center;font-weight:600;cursor:pointer;margin-top:0;">
+              <input type="checkbox" id="tcoToggle" style="width:auto;margin-right:10px;transform:scale(1.2);">
+              Include hidden customer-borne costs
+            </label>
+            <p class="calc-helper" style="margin-top:6px;">Cal gas, tubing install labor, electrical, IT setup, and compliance reporting consulting — costs the vendor invoices push off-quote.</p>
+          </div>
+
+          <div class="calc-summary">
+            <div class="big" id="annualGP">$595,800</div>
+            <div class="label">Annual gross profit (revenue × margin)</div>
+          </div>
+        </div>
+
+        <div class="calc-results">
+          <p style="font-size:14px;color:var(--gray-600);margin-bottom:16px;">
+            <strong>5-year compliance cost as % of annual gross profit:</strong>
+          </p>
+
+          <div class="result-block">
+            <div class="result-label">
+              <span class="name">CleanAir aQ + CEMS combined</span>
+              <span class="amt" id="ca-combo-amt">$222,440/yr</span>
+              <span class="pct pct-bad" id="ca-combo-pct">37%</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" id="ca-combo-bar" style="background:var(--red);width:37%;"></div></div>
+          </div>
+
+          <div class="result-block">
+            <div class="result-label">
+              <span class="name">Picarro Purchase (25 pts)</span>
+              <span class="amt" id="pic-pur-amt">$132,469/yr</span>
+              <span class="pct pct-warn" id="pic-pur-pct">22%</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" id="pic-pur-bar" style="background:#B45309;width:22%;"></div></div>
+          </div>
+
+          <div class="result-block">
+            <div class="result-label">
+              <span class="name">Picarro Lease (25 pts)</span>
+              <span class="amt" id="pic-lse-amt">$116,669/yr</span>
+              <span class="pct pct-warn" id="pic-lse-pct">20%</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" id="pic-lse-bar" style="background:#B45309;width:20%;"></div></div>
+          </div>
+
+          <div class="result-block">
+            <div class="result-label">
+              <span class="name">Boulder iQ Indoor + Parametric (recommended)</span>
+              <span class="amt" id="biq-rec-amt">$99,000/yr</span>
+              <span class="pct pct-warn" id="biq-rec-pct">17%</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" id="biq-rec-bar" style="background:var(--gold-dark);width:17%;"></div></div>
+          </div>
+
+          <div class="result-block">
+            <div class="result-label">
+              <span class="name">Boulder iQ Indoor only</span>
+              <span class="amt" id="biq-ind-amt">$60,000/yr</span>
+              <span class="pct pct-good" id="biq-ind-pct">10%</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" id="biq-ind-bar" style="background:var(--green);width:10%;"></div></div>
+          </div>
+
+          <div class="calc-summary" style="margin-top:24px;border-left-color:var(--green);">
+            <div class="big" id="savings">Saves you $123,440/year</div>
+            <div class="label" id="savingsLabel">vs CleanAir aQ + CEMS combined (the only NESHAP path CleanAir sells)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SOLUTIONS ===== -->
+<section id="solutions" class="alt">
+  <div class="container">
+    <h2>Three solution paths.</h2>
+    <p class="section-lede">All three: zero upfront capital, all-inclusive monthly pricing, month-to-month lease.</p>
+    <div class="solutions">
+
+      <div class="solution-card">
+        <h3>Indoor only</h3>
+        <p style="font-size:13px;color:var(--gray-600);">Best for: facilities with no NESHAP control device, or exempt operations.</p>
+        <div class="price">$5,000<small>/mo</small></div>
+        <p class="price-note">$300,000 over 5 years &middot; $60,000 Year-0 cash</p>
+        <ul>
+          <li>FIFRA continuous indoor monitoring at 12 sample points</li>
+          <li>50 ppb detection — 1/5 of the 2031 worker exposure limit</li>
+          <li>Cloud dashboard + SMS/email alerts</li>
+          <li>Auto-generated compliance reports</li>
+          <li>Quarterly compliance review with our specialist</li>
+        </ul>
+      </div>
+
+      <div class="solution-card recommended">
+        <h3>Indoor + Parametric</h3>
+        <p style="font-size:13px;color:var(--gray-600);">Best for: small &lt;1 tpy facilities choosing the lower-cost NESHAP parametric path.</p>
+        <div class="price">$7,000<small>/mo</small></div>
+        <p class="price-note">$495,000 over 5 years (incl. $15K/yr performance test) &middot; $99,000 Year-0 cash</p>
+        <ul>
+          <li>Everything in Indoor only</li>
+          <li>Operating-parameter monitoring for NESHAP parametric path</li>
+          <li>Annual performance test scheduled and coordinated by us</li>
+          <li>Ready-to-deploy Standard Operating Procedures and forms</li>
+          <li>Electronic submittal preparation through CEDRI</li>
+        </ul>
+      </div>
+
+      <div class="solution-card">
+        <h3>Indoor + Stack CEMS</h3>
+        <p style="font-size:13px;color:var(--gray-600);">Best for: facilities choosing continuous emission monitoring for the strongest audit posture.</p>
+        <div class="price">$11,000<small>/mo</small></div>
+        <p class="price-note">$660,000 over 5 years &middot; $132,000 Year-0 cash</p>
+        <ul>
+          <li>Everything in Indoor only</li>
+          <li>PS-19-certified continuous emission monitoring on chamber vent</li>
+          <li>Initial RATA coordination + 3rd-party stack tester scheduling</li>
+          <li>Full NESHAP CEMS compliance</li>
+          <li>Hardware-and-labor warranty extends with continued lease</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== COMPARISON ===== -->
+<section id="compare">
+  <div class="container">
+    <h2>How we compare.</h2>
+    <p class="section-lede">
+      <strong>Apples-to-apples five-year all-in cost.</strong> Each column includes the same scope:
+      monitoring hardware, calibration gas, sample tubing, electrical and IT setup, and compliance
+      reporting (which Picarro and CleanAir push to a regulatory consultant — about $15K/year — and
+      Boulder iQ bundles in the lease). Customer-borne costs are real costs your CFO will see hit the
+      bank account either way; we just include them honestly.
+    </p>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Customer scenario</th>
+          <th>Picarro</th>
+          <th>CleanAir</th>
+          <th>Boulder iQ</th>
+          <th>You save</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>FIFRA monitoring (5-year all-in)</td>
+          <td>$747K – $826K</td>
+          <td>$548,500</td>
+          <td>$375,000</td>
+          <td class="savings">$173,500 (32%)<br><span style="font-weight:400;font-size:12px;">≈ $2,892 / month</span></td>
+        </tr>
+        <tr class="highlight">
+          <td>FIFRA + NESHAP Parametric (recommended for &lt;1 tpy)</td>
+          <td>n/a</td>
+          <td>$1,266,200</td>
+          <td>$570,000</td>
+          <td class="savings">$696,200 (55%)<br><span style="font-weight:400;font-size:12px;">≈ $11,603 / month</span></td>
+        </tr>
+        <tr>
+          <td>FIFRA + Full CEMS</td>
+          <td>n/a</td>
+          <td>$1,266,200</td>
+          <td>$735,000</td>
+          <td class="savings">$531,200 (42%)<br><span style="font-weight:400;font-size:12px;">≈ $8,853 / month</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:var(--gray-600);margin-top:16px;">
+      Picarro WMS-25 covers indoor air (FIFRA) only — it is not a NESHAP CEMS or parametric system.
+      For scenarios 2 and 3 a Picarro customer would need to add a separate NESHAP solution, so total
+      spend would exceed the figures in scenario 1. CleanAir doesn't sell parametric monitoring at any
+      tier — customers needing both FIFRA and NESHAP from CleanAir must buy the full CEMS bundle.
+      Boulder iQ supports all three paths with the same equipment family. <strong>Toggle the calculator's
+      "Include hidden customer-borne costs" option to see this same TCO logic with your own facility's numbers.</strong>
+    </p>
+  </div>
+</section>
+
+<!-- ===== TRAVEL ===== -->
+<section id="travel">
+  <div class="container">
+    <h2>Who pays for travel and onsite visits?</h2>
+    <p class="section-lede">
+      Technician travel and onsite visits add up fast. Here's exactly what's bundled,
+      what's billed extra, and how often someone shows up at your facility.
+    </p>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th style="width:32%">Activity</th>
+          <th>Picarro Annual Service Plan ($50K/yr)</th>
+          <th>CleanAir Essential ($3K/mo R2)</th>
+          <th>Boulder iQ (in $5K-$11K/mo)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td colspan="4" style="background:var(--gray-100);font-weight:700;color:var(--navy);">Initial install</td></tr>
+        <tr>
+          <td>Onsite commissioning + FAT/SAT (3-5 days)</td>
+          <td style="color:var(--green);">✓ Travel &amp; living included</td>
+          <td style="color:var(--green);">✓ Travel &amp; living included (2 personnel)</td>
+          <td style="color:var(--green);">✓ Travel &amp; living included</td>
+        </tr>
+        <tr>
+          <td>Operator training (initial)</td>
+          <td style="color:var(--green);">✓ Onsite, included</td>
+          <td style="color:var(--green);">✓ Onsite, included</td>
+          <td style="color:var(--green);">✓ Onsite, paired with commissioning</td>
+        </tr>
+
+        <tr><td colspan="4" style="background:var(--gray-100);font-weight:700;color:var(--navy);">Recurring onsite visits</td></tr>
+        <tr>
+          <td>Annual onsite validation &amp; maintenance visit</td>
+          <td style="color:var(--green);">✓ 1× per year, T&amp;L included</td>
+          <td style="color:var(--gray-400);">— (replaced by quarterly visits)</td>
+          <td style="color:var(--green);">✓ 1× per year, T&amp;L included</td>
+        </tr>
+        <tr>
+          <td>Quarterly preventative maintenance onsite</td>
+          <td style="color:var(--red);font-weight:700;">✗ Remote only</td>
+          <td style="color:var(--green);">✓ 4× per year, T&amp;L included</td>
+          <td style="color:var(--red);font-weight:700;">✗ Remote only (operator-led, vendor coached)</td>
+        </tr>
+        <tr>
+          <td>Quarterly NESHAP Procedure 7 accuracy audits (CGA)</td>
+          <td style="color:var(--green);">✓ Quarterly, remote with operator</td>
+          <td style="color:var(--green);">✓ Quarterly, vendor onsite</td>
+          <td style="color:var(--green);">✓ Quarterly, remote with operator (vendor coaches via video)</td>
+        </tr>
+        <tr>
+          <td>Annual training refresher</td>
+          <td style="color:var(--green);">✓ Remote, 2× per year</td>
+          <td style="color:var(--green);">✓ Onsite, 2× per year</td>
+          <td style="color:var(--green);">✓ Paired with annual onsite (no extra travel)</td>
+        </tr>
+
+        <tr><td colspan="4" style="background:var(--gray-100);font-weight:700;color:var(--navy);">Unplanned events</td></tr>
+        <tr>
+          <td>Emergency dispatch (24-hour response)</td>
+          <td style="color:var(--gray-600);">Loaner instrument provided; onsite billed at fee schedule + travel</td>
+          <td style="color:var(--green);">✓ Same/next-day response; T&amp;L included if within program scope</td>
+          <td style="color:var(--gray-600);">Same-day remote response included; onsite dispatch at cost (customer reimburses travel)</td>
+        </tr>
+        <tr>
+          <td>Replacement equipment (loaner during repair)</td>
+          <td style="color:var(--green);">✓ Complimentary loaner (Commercial plan)</td>
+          <td style="color:var(--gray-400);">— Spare parts shipped next-day</td>
+          <td style="color:var(--gray-400);">— Spare parts shipped next-day</td>
+        </tr>
+        <tr>
+          <td>Remote diagnostic checks</td>
+          <td style="color:var(--green);">✓ Quarterly, included</td>
+          <td style="color:var(--green);">✓ Quarterly, included (Enhanced+ adds monthly)</td>
+          <td style="color:var(--green);">✓ Continuous via cloud platform</td>
+        </tr>
+
+        <tr><td colspan="4" style="background:var(--gray-100);font-weight:700;color:var(--navy);">Travel cost economics</td></tr>
+        <tr>
+          <td>Bundled onsite visits per year</td>
+          <td>1 visit/yr (annual maintenance)</td>
+          <td>~6 visits/yr (4 PM + 2 training)</td>
+          <td>1 visit/yr (annual maintenance + training combined)</td>
+        </tr>
+        <tr>
+          <td>Travel &amp; living expenses for bundled visits</td>
+          <td>Picarro pays</td>
+          <td>CleanAir pays</td>
+          <td>Boulder iQ pays for the annual visit; all additional visits at cost</td>
+        </tr>
+        <tr>
+          <td>Out-of-scope visit cost (if customer requests)</td>
+          <td>~$1,200-$2,500/visit (Picarro fee schedule)</td>
+          <td>~$1,200-$2,000/visit (CleanAir fee schedule, $225/hr E2 rate)</td>
+          <td>Pass-through at cost (no markup); typical $1,000-1,500/visit</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:var(--gray-600);margin-top:16px;">
+      Boulder iQ follows the Picarro model on visit cadence: <strong>1 annual onsite visit included
+      with travel and living, plus continuous remote diagnostics and quarterly NESHAP Procedure 7
+      accuracy audits done remotely with your operator (we coach via video, your trained operator
+      runs the calibration gas audit).</strong> CleanAir's 6-onsite-visits-per-year model is
+      operationally heavier — back-to-back vendor trips your team has to host — and is built into
+      their $3,000/month support program with a 3-year minimum commitment. Boulder iQ keeps the
+      hands-on regulatory work where it belongs (with your trained operator) and only sends a
+      technician when one is genuinely needed. Additional onsite visits beyond the bundled annual
+      one are billed at cost with no markup, so you have full transparency on what you're paying for.
+    </p>
+  </div>
+</section>
+
+<!-- ===== INCLUDED ===== -->
+<section class="alt">
+  <div class="container">
+    <h2>What's included.</h2>
+    <p class="section-lede">Every Boulder iQ solution comes with all of this — no surprise add-ons, no separately-quoted line items.</p>
+    <div class="included-grid">
+      <div class="included-col">
+        <h3>Hardware &amp; commissioning</h3>
+        <ul>
+          <li>High-sensitivity ethylene oxide analyzer measuring down to 50 ppb (0.05 ppm)</li>
+          <li>12-point sample manifold with automated daily calibration</li>
+          <li>NEMA 12 industrial enclosure with active ventilation</li>
+          <li>Uninterruptible power supply (30-minute runtime)</li>
+          <li>1,000 feet of PTFE sample tubing</li>
+          <li>Two calibration gas regulators with pressure sensors</li>
+          <li>Humidity control filtration panel</li>
+          <li>On-site installation, commissioning, FAT/SAT validation</li>
+          <li>Operator training (initial plus refreshers)</li>
+          <li>Two-year hardware warranty (extends with continued lease)</li>
+        </ul>
+      </div>
+      <div class="included-col">
+        <h3>Compliance &amp; support</h3>
+        <ul>
+          <li>Cloud-based dashboard with outside-network access</li>
+          <li>Email and SMS alerts; Microsoft Teams integration</li>
+          <li>Ready-to-use Standard Operating Procedures</li>
+          <li>Turnkey data-collection and reporting forms</li>
+          <li>Auto-generated semiannual NESHAP compliance reports</li>
+          <li>Auto-generated annual compliance certifications</li>
+          <li>Electronic submittal preparation through CEDRI/CDX</li>
+          <li>Quarterly compliance review with our specialist</li>
+          <li>Mock inspection prep and inspector-ready PDF reports</li>
+          <li>24-hour emergency support hotline</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHAT'S NOT INCLUDED ===== -->
+<section id="gaps">
+  <div class="container">
+    <h2>What's NOT included.</h2>
+    <p class="section-lede">
+      The hidden picture every vendor avoids putting on their quote. Here's what each one
+      pushes off-invoice — costs you'll either pay separately or work around yourself.
+    </p>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th style="width:38%">Item</th>
+          <th>Picarro WMS-25</th>
+          <th>CleanAir MET-44 aQ</th>
+          <th>Boulder iQ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td colspan="4" style="background:var(--gray-100);font-weight:700;color:var(--navy);">Hardware &amp; physical setup</td></tr>
+        <tr>
+          <td>Calibration gas (zero + 5 ppm EtO span gas, ~$11K/yr recurring)</td>
+          <td style="color:var(--red);font-weight:700;">✗ Customer</td>
+          <td style="color:var(--red);font-weight:700;">✗ Customer</td>
+          <td style="color:var(--red);font-weight:700;">✗ Customer</td>
+        </tr>
+        <tr>
+          <td>Calibration gas regulators with pressure sensors</td>
+          <td style="color:var(--red);font-weight:700;">✗ Customer (~$600)</td>
+          <td style="color:var(--green);font-weight:700;">✓ Two included</td>
+          <td style="color:var(--green);font-weight:700;">✓ Two included</td>
+        </tr>
+        <tr>
+          <td>Sample tubing material</td>
+          <td style="color:var(--green);font-weight:700;">✓ 2,500 ft included</td>
+          <td style="color:var(--red);font-weight:700;">✗ Quoted separately (~$4K)</td>
+          <td style="color:var(--green);font-weight:700;">✓ 1,000 ft included</td>
+        </tr>
+        <tr>
+          <td>Sample tubing installation labor</td>
+          <td style="color:var(--red);font-weight:700;">✗ Customer (25-pt)</td>
+          <td style="color:var(--red);font-weight:700;">✗ Customer (12-pt)</td>
+          <td style="color:var(--red);font-weight:700;">✗ Customer (12-pt)</td>
+        </tr>
+        <tr>
+          <td>Humidity control filtration panel</td>
+          <td style="color:var(--red);font-weight:700;">✗ Not mentioned</td>
+          <td style="color:var(--green);font-weight:700;">✓ Included</td>
+          <td style="color:var(--green);font-weight:700;">✓ Included</td>
+        </tr>
+        <tr>
+          <td>120V AC electrical circuit installation</td>
+          <td style="color:var(--red);font-weight:700;">✗ Customer</td>
+          <td style="color:var(--red);font-weight:700;">✗ Customer (2 circuits)</td>
+          <td style="color:var(--red);font-weight:700;">✗ Customer</td>
+        </tr>
+        <tr>
+          <td>IT/network connection setup</td>
+          <td style="color:var(--red);font-weight:700;">✗ Customer</td>
+          <td style="color:var(--red);font-weight:700;">✗ Customer</td>
+          <td style="color:var(--red);font-weight:700;">✗ Customer</td>
+        </tr>
+
+        <tr><td colspan="4" style="background:var(--gray-100);font-weight:700;color:var(--navy);">Calibration &amp; QA/QC</td></tr>
+        <tr>
+          <td>Quarterly Calibration Gas Audits (CGAs) onsite</td>
+          <td style="color:var(--red);font-weight:700;">✗ Annual onsite only</td>
+          <td style="color:var(--green);font-weight:700;">✓ Quarterly</td>
+          <td style="color:var(--green);font-weight:700;">✓ Quarterly</td>
+        </tr>
+        <tr>
+          <td>Annual RATA (Relative Accuracy Test Audit, 3rd-party stack tester)</td>
+          <td style="color:var(--gray-400);">N/A — not stack CEMS</td>
+          <td style="color:var(--red);font-weight:700;">✗ ~$43,200 separate</td>
+          <td style="color:var(--green);font-weight:700;">✓ Coordinated by us (Stack CEMS only)</td>
+        </tr>
+        <tr>
+          <td>Annual performance test (NESHAP parametric path)</td>
+          <td style="color:var(--gray-400);">N/A — no parametric</td>
+          <td style="color:var(--gray-400);">N/A — no parametric</td>
+          <td style="color:var(--green);font-weight:700;">✓ ~$15K/yr coordinated</td>
+        </tr>
+
+        <tr><td colspan="4" style="background:var(--gray-100);font-weight:700;color:var(--navy);">Compliance reporting &amp; submittal</td></tr>
+        <tr>
+          <td>Semiannual NESHAP report preparation (§63.367(c))</td>
+          <td style="color:var(--red);font-weight:700;">✗ DIY or hire consultant</td>
+          <td style="color:var(--red);font-weight:700;">✗ DIY or hire consultant</td>
+          <td style="color:var(--green);font-weight:700;">✓ Auto-generated</td>
+        </tr>
+        <tr>
+          <td>Annual compliance certification (§63.367(d))</td>
+          <td style="color:var(--red);font-weight:700;">✗ DIY or hire consultant</td>
+          <td style="color:var(--red);font-weight:700;">✗ DIY or hire consultant</td>
+          <td style="color:var(--green);font-weight:700;">✓ Auto-generated</td>
+        </tr>
+        <tr>
+          <td>CEDRI/CDX electronic submittal package</td>
+          <td style="color:var(--red);font-weight:700;">✗ Customer files own</td>
+          <td style="color:var(--red);font-weight:700;">✗ Customer files own</td>
+          <td style="color:var(--green);font-weight:700;">✓ We prepare and file</td>
+        </tr>
+        <tr>
+          <td>Standard Operating Procedure library (NESHAP-ready)</td>
+          <td style="color:var(--red);font-weight:700;">✗ Not provided</td>
+          <td style="color:var(--red);font-weight:700;">✗ Not provided</td>
+          <td style="color:var(--green);font-weight:700;">✓ Included</td>
+        </tr>
+        <tr>
+          <td>Data collection &amp; reporting form library</td>
+          <td style="color:var(--red);font-weight:700;">✗ Not provided</td>
+          <td style="color:var(--red);font-weight:700;">✗ Not provided</td>
+          <td style="color:var(--green);font-weight:700;">✓ Included</td>
+        </tr>
+        <tr>
+          <td>Mock inspection prep / inspector-ready PDF reports</td>
+          <td style="color:var(--red);font-weight:700;">✗ Not offered</td>
+          <td style="color:var(--red);font-weight:700;">✗ Not offered</td>
+          <td style="color:var(--green);font-weight:700;">✓ Included</td>
+        </tr>
+        <tr>
+          <td>Quarterly compliance review with regulatory specialist</td>
+          <td style="color:var(--red);font-weight:700;">✗ Not offered</td>
+          <td style="color:var(--red);font-weight:700;">✗ Not offered</td>
+          <td style="color:var(--green);font-weight:700;">✓ Included</td>
+        </tr>
+
+        <tr><td colspan="4" style="background:var(--gray-100);font-weight:700;color:var(--navy);">NESHAP path coverage</td></tr>
+        <tr>
+          <td>Parametric NESHAP monitoring product</td>
+          <td style="color:var(--red);font-weight:700;">✗ Not sold</td>
+          <td style="color:var(--red);font-weight:700;">✗ Not sold</td>
+          <td style="color:var(--green);font-weight:700;">✓ $7,000/mo bundle</td>
+        </tr>
+        <tr>
+          <td>Stack CEMS product (NESHAP continuous emission monitoring)</td>
+          <td style="color:var(--red);font-weight:700;">✗ Not sold (WMS-25 is indoor only)</td>
+          <td style="color:var(--green);font-weight:700;">✓ $717,700/5 yrs</td>
+          <td style="color:var(--green);font-weight:700;">✓ $11,000/mo bundle</td>
+        </tr>
+
+        <tr><td colspan="4" style="background:var(--gray-100);font-weight:700;color:var(--navy);">Commercial flexibility</td></tr>
+        <tr>
+          <td>Month-to-month lease / cancel anytime</td>
+          <td style="color:var(--red);font-weight:700;">✗ 60-month lease only</td>
+          <td style="color:var(--red);font-weight:700;">✗ 3-yr min support</td>
+          <td style="color:var(--green);font-weight:700;">✓ 30 days notice</td>
+        </tr>
+        <tr>
+          <td>Zero upfront capital</td>
+          <td style="color:var(--red);font-weight:700;">✗ $462K Y0 (purchase)</td>
+          <td style="color:var(--red);font-weight:700;">✗ $226,500 Y0</td>
+          <td style="color:var(--green);font-weight:700;">✓ $60K Y0 (12 mo of lease)</td>
+        </tr>
+        <tr>
+          <td>Independent technology stack</td>
+          <td style="color:var(--gray-400);">Picarro analyzer (their own)</td>
+          <td style="color:var(--red);font-weight:700;">Built on Picarro analyzer</td>
+          <td style="color:var(--green);font-weight:700;">✓ Independent EtO analyzer</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:var(--gray-600);margin-top:16px;">
+      Customer-side facility prep (electrical, IT, calibration gas, tubing labor) is unavoidable
+      with any vendor — those costs are roughly the same for all three. The real differentiator
+      is the bottom two sections: <strong>compliance reporting and submittal</strong> (where Boulder iQ
+      bundles what others charge $15K/year extra to consultants for) and <strong>NESHAP path coverage</strong>
+      (where Picarro doesn't sell stack CEMS at all and CleanAir doesn't sell parametric).
+      Note that CleanAir's MET-44 is built on the Picarro analyzer — both vendors share the same
+      core EtO detection technology, so CleanAir's primary advantage over Picarro is enclosure,
+      manifold, and service program.
+    </p>
+  </div>
+</section>
+
+<!-- ===== WHY ===== -->
+<section class="alt">
+  <div class="container">
+    <h2>Why Boulder iQ wins.</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <h3>Built for facilities like yours.</h3>
+        <p>Designed for the small-volume &lt;1 ton-per-year combination-chamber profile. No oversized 25-point system you don't need. No enterprise-priced services your facility can't justify.</p>
+      </div>
+      <div class="why-card">
+        <h3>Zero upfront capital.</h3>
+        <p>$60,000 Year-0 cash for indoor monitoring versus $226,500 for CleanAir's aQ system or $462,000 for Picarro's purchase. No capital approval, no asset to depreciate, no multi-year lock-in.</p>
+      </div>
+      <div class="why-card">
+        <h3>Compliance-as-a-service.</h3>
+        <p>Other vendors sell hardware and hand you the data. We deliver the actual regulatory reports and electronically file them with the regulator. The compliance work happens for you, not by you.</p>
+      </div>
+      <div class="why-card">
+        <h3>Both NESHAP paths supported.</h3>
+        <p>Choose continuous emission monitoring or the lower-cost parametric path with periodic performance tests. Same equipment, same platform. Other vendors only sell CEMS — locking you into the most expensive route.</p>
+      </div>
+      <div class="why-card">
+        <h3>Month-to-month lease.</h3>
+        <p>Cancel any month with 30 days' notice. CleanAir requires three-year minimum service commitments worth six figures. We don't.</p>
+      </div>
+      <div class="why-card">
+        <h3>We use it ourselves.</h3>
+        <p>Boulder iQ runs the same equipment in our own sterilization operation. When you buy from us, you're buying a product we depend on every day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq" class="alt">
+  <div class="container">
+    <h2>Frequently asked questions.</h2>
+    <div style="max-width:780px;">
+
+      <div class="faq-item">
+        <div class="faq-q">Will this work with my 3M Steri-Vac, Solventum, or Anderson chambers?</div>
+        <div class="faq-a">Yes. Boulder iQ was designed specifically around combination chambers (sterilize and aerate in the same vessel) which is the architecture used by 3M Steri-Vac, the Solventum-rebranded successor models, and Anderson sterilizers. Combination units actually simplify NESHAP compliance because they eliminate two separate emission points (the Aeration Room Vent and Chamber Exhaust Vent) that other facility designs require.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What's the difference between parametric monitoring and CEMS, and why does it matter?</div>
+        <div class="faq-a">Continuous Emission Monitoring (CEMS) requires a PS-19 certified analyzer continuously sampling the exhaust stack. Parametric monitoring tracks the operating conditions of your control device (temperature, flow, etc.) plus periodic performance tests — the EPA explicitly allows this approach under NESHAP. Parametric is significantly cheaper. CleanAir doesn't sell parametric, so their customers default to CEMS at $717,000 even when they don't need it. Boulder iQ supports both.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What costs are NOT included in the Picarro and CleanAir invoice prices?</div>
+        <div class="faq-a">Several. Both vendors push the following costs off-invoice to the customer: <strong>calibration gas</strong> (zero gas plus 5 ppm EtO/N2 specialty span gas, ~$10K-12K/year recurring), <strong>sample tubing installation labor</strong> ($12K-25K one-time depending on point count), <strong>electrical and IT setup</strong> ($3K-6K one-time), and most importantly <strong>compliance reporting consulting</strong> if you outsource it (~$15K/year for routine NESHAP semiannual reports, annual certifications, and CEDRI submittal preparation). Picarro additionally requires you to buy your own calibration gas regulators (~$600). CleanAir does not bundle sample tubing material (~$4K extra). Boulder iQ is the only vendor that bundles compliance reporting and submittal in the price — saving $75,000 over five years versus retaining a regulatory consultant separately. Toggle "Include hidden customer-borne costs" in the calculator to see your true total cost of ownership.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What does each vendor's "reporting" actually include?</div>
+        <div class="faq-a"><strong>Picarro Annual Service Plan ($50K/yr)</strong> includes "custom dashboards, reports, and alarms" — meaning configurable dashboards and on-demand reports generated from the analyzer's data. It does NOT include preparation of the formal NESHAP semiannual or annual compliance reports, nor electronic submittal through CEDRI. <strong>CleanAir Essential ($3K/mo)</strong> includes quarterly summary reports and a site-specific QA framework. <strong>CleanAir Enhanced</strong> (more expensive tier) adds monthly internal compliance reviews. <strong>CleanAir Exclusive</strong> (most expensive tier) adds weekly QA documentation. None of those tiers include preparation and electronic filing of the §63.367(c) semiannual report or §63.367(d) annual certification — customers DIY or hire a consultant. <strong>Boulder iQ</strong> auto-generates both the semiannual and annual reports from your monitoring data and prepares the CEDRI submittal package in our standard pricing. The reports actually get filed for you.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">When do I need to be compliant?</div>
+        <div class="faq-a">FIFRA continuous indoor monitoring takes effect via amended pesticide product labels — most facilities should plan for January 2027. NESHAP compliance demonstration is due October 5, 2027 for existing area sources; Notification of Compliance Status due December 6, 2027. Boulder iQ ships within 12 weeks of order acceptance, so you can start any time and still beat both deadlines.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What about the 2024 NESHAP rule reconsideration?</div>
+        <div class="faq-a">The EPA proposed reconsidering parts of the 2024 Final Rule on March 17, 2026 (91 FR 12700). Final action is expected late 2026 or 2027. The reconsideration adds compliance flexibility, particularly for the parametric monitoring path — which favors Boulder iQ's recommended bundle. FIFRA worker exposure limits are completely unaffected by this NESHAP action; those drive indoor monitoring requirements regardless of how the NESHAP reconsideration finalizes.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What happens if I cancel?</div>
+        <div class="faq-a">30 days' notice, no penalty, no remaining-term invoice. We pick up the hardware. Compare to CleanAir's three-year minimum support commitment (worth $108,000 minimum) or Picarro's 60-month lease.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">How fast can I get installed?</div>
+        <div class="faq-a">12 weeks from purchase order acceptance to commissioned and operational. CleanAir and Picarro both quote 16-20 weeks.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Do you handle the actual regulatory submittals?</div>
+        <div class="faq-a">Yes. Boulder iQ auto-generates the semiannual NESHAP compliance report and the annual compliance certification, and prepares the CEDRI/CDX electronic submittal package. Neither Picarro nor CleanAir bundles this — their customers either build the reports manually or pay a regulatory consultant separately.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What sensitivity does your analyzer measure?</div>
+        <div class="faq-a">Boulder iQ measures down to <strong>50 parts per billion (0.05 ppm)</strong> — that's 1/5 of the 2031 worker exposure limit (0.25 ppm = 250 ppb) and below the 2035 limit of 100 ppb. Our analyzer cycles 12 sample points with a 5-minute measurement per point. For high-exposure locations needing faster coverage of OSHA's 15-minute STEL, we offer optional dedicated continuous point sensors.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section id="contact">
+  <div class="container">
+    <div class="cta-box">
+      <h2>30-minute facility assessment.</h2>
+      <p>
+        We'll confirm which solution path fits your operation, identify the right number of
+        sample points, and finalize a quote with site-specific implementation details.
+        No obligation, no follow-up sales pressure.
+      </p>
+      <a href="mailto:jim.kasic@boulderiq.com?subject=EtO%20compliance%20assessment%20request&body=Facility%20name%3A%0AContact%20name%3A%0APhone%3A%0AAnnual%20EtO%20usage%20(lbs%2Fyr)%3A%0ASterilizer%20brand%2Fmodel%3A%0ABest%20time%20to%20schedule%3A" class="btn-gold">Schedule my assessment →</a>
+      <p style="margin-top:24px;font-size:14px;opacity:0.7;">
+        Or email <a href="mailto:jim.kasic@boulderiq.com" style="color:var(--gold);text-decoration:underline;">jim.kasic@boulderiq.com</a> directly.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <h4>BOULDER iQ</h4>
+        <p>
+          Compliance solutions for small-volume ethylene oxide sterilization.<br>
+          5421 Western Avenue, Boulder, Colorado 80301<br>
+          <a href="mailto:jim.kasic@boulderiq.com">jim.kasic@boulderiq.com</a>
+        </p>
+      </div>
+      <div>
+        <h4>RESOURCES</h4>
+        <p>
+          <a href="#calculator">Cost calculator</a><br>
+          <a href="#solutions">Solutions</a><br>
+          <a href="#compare">Vendor comparison</a><br>
+          <a href="#faq">FAQ</a>
+        </p>
+      </div>
+    </div>
+    <p style="margin-top:32px;font-size:12px;text-align:center;opacity:0.5;">
+      © 2026 Boulder iQ &middot; Pricing reflects April 2026 quotes; subject to change with regulatory updates.
+    </p>
+  </div>
+</footer>
+
+<script>
+  // ===== Calculator =====
+  const cyclesEl = document.getElementById("cycles");
+  const revEl = document.getElementById("rev");
+  const marginEl = document.getElementById("margin");
+  const annualGPEl = document.getElementById("annualGP");
+  const savingsEl = document.getElementById("savings");
+
+  // Vendor 5-yr costs (from V4 model)
+  // Each vendor has invoice-only cost AND true TCO (with customer-borne costs added)
+  const vendors = [
+    { id: "ca-combo",  invoice: 1112200, tco: 1266200, baseline: true },
+    { id: "pic-pur",   invoice: 662344,  tco: 825944 },
+    { id: "pic-lse",   invoice: 583343,  tco: 746943 },
+    { id: "biq-rec",   invoice: 495000,  tco: 570000 },
+    { id: "biq-ind",   invoice: 300000,  tco: 375000 }
+  ];
+  const tcoToggle = document.getElementById("tcoToggle");
+  // Color helpers
+  function colorFor(pct) {
+    if (pct >= 25) return ["var(--red)", "pct-bad"];
+    if (pct >= 15) return ["#B45309", "pct-warn"];
+    return ["var(--green)", "pct-good"];
+  }
+  function fmt(n) {
+    return "$" + Math.round(n).toLocaleString("en-US");
+  }
+
+  function recalc() {
+    const cycles = +cyclesEl.value || 0;
+    const rev = +revEl.value || 0;
+    const margin = (+marginEl.value || 0) / 100;
+    const annualRev = cycles * rev;
+    const annualGP = annualRev * margin;
+
+    annualGPEl.textContent = fmt(annualGP);
+
+    const useTco = tcoToggle.checked;
+    let baselineAnnualCost = 0;
+    let bestAnnualCost = Infinity;
+
+    vendors.forEach(v => {
+      const cost5yr = useTco ? v.tco : v.invoice;
+      const annualCost = cost5yr / 5;
+      const pct = annualGP > 0 ? (annualCost / annualGP) * 100 : 0;
+      const [color, cls] = colorFor(pct);
+      const amtEl = document.getElementById(v.id + "-amt");
+      const pctEl = document.getElementById(v.id + "-pct");
+      const barEl = document.getElementById(v.id + "-bar");
+      amtEl.textContent = fmt(annualCost) + "/yr";
+      pctEl.textContent = pct.toFixed(0) + "%";
+      pctEl.className = "pct " + cls;
+      barEl.style.background = color;
+      barEl.style.width = Math.min(pct, 100) + "%";
+      if (v.baseline) baselineAnnualCost = annualCost;
+      if (v.id === "biq-rec") bestAnnualCost = annualCost;
+    });
+
+    const yearlySavings = baselineAnnualCost - bestAnnualCost;
+    const label = useTco
+      ? "Total cost of ownership savings vs CleanAir Combined (incl. cal gas, tubing, reporting)"
+      : "vs CleanAir aQ + CEMS combined (the only NESHAP path CleanAir sells)";
+    savingsEl.textContent = "Saves you " + fmt(yearlySavings) + "/year";
+    document.getElementById("savingsLabel").textContent = label;
+  }
+
+  cyclesEl.addEventListener("input", recalc);
+  revEl.addEventListener("input", recalc);
+  marginEl.addEventListener("input", recalc);
+  tcoToggle.addEventListener("change", recalc);
+  recalc();
+
+  // ===== FAQ accordion =====
+  document.querySelectorAll(".faq-item").forEach(item => {
+    item.addEventListener("click", () => item.classList.toggle("open"));
+  });
+</script>
+
+</body>
+</html>
